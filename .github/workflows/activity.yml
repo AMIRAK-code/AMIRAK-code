@@ -1,0 +1,57 @@
+name: Refresh activity artwork
+
+# Redraws assets/activity.svg from the public contribution calendar.
+# No personal access token: the calendar is public, and the commit uses the
+# built-in GITHUB_TOKEN restricted to this repository's contents.
+
+on:
+  schedule:
+    - cron: '17 4 * * *' # daily, 04:17 UTC (off the top of the hour)
+  workflow_dispatch:
+  # Also run when the generator changes, so a fresh push renders immediately.
+  # (Commits made with GITHUB_TOKEN never re-trigger workflows, so no loop.)
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/activity.mjs'
+      - 'scripts/lib/**'
+      - '.github/workflows/activity.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: activity
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Exits non-zero without writing anything if the fetch, parse or
+      # sanity checks fail, so the last valid image stays committed.
+      - name: Fetch calendar and render
+        run: node scripts/activity.mjs
+        env:
+          PROFILE_LOGIN: ${{ github.repository_owner }}
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- assets/activity.svg data/activity.json; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/activity.svg data/activity.json
+          git commit -m "chore(activity): refresh snapshot $(date -u +%F)"
+          git push

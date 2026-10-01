@@ -1,0 +1,13 @@
+{
+  "name": "amirak-code-profile",
+  "private": true,
+  "type": "module",
+  "description": "Assets and scripts for the AMIRAK-code GitHub profile README",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build-assets.mjs && node scripts/activity.mjs --render-only",
+    "activity": "node scripts/activity.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "license": "MIT"
+}
