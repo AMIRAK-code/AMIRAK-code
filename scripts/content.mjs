@@ -98,14 +98,14 @@ export const PROJECTS = [
     chips: ['EXPO', 'REACT NATIVE', 'ZUSTAND'],
   },
   {
-    id: 'napoliwalks',
-    name: 'Napoli Walks',
-    repo: 'napoliwalks',
-    status: { kind: 'course', label: 'COURSE PROJECT' },
-    tagline: 'Free walking tours in Naples: tours, bookings, reports.',
-    desc: 'Exam project for Introduction to Web Applications: guides publish tours, participants reserve places, and guides file post-tour reports. Server-rendered Flask with SQLite.',
-    tech: ['Python', 'Flask', 'Flask-Login', 'SQLite', 'Jinja'],
-    chips: ['FLASK', 'SQLITE', 'JINJA'],
+    id: 'easyconvert',
+    name: 'Easy Convert',
+    repo: 'easy-converter-ext-desktop-app',
+    status: { kind: 'live', label: 'RELEASED · v0.1.0' },
+    tagline: 'Right-click any file, convert it to anything from a wheel.',
+    desc: 'Windows app and Chrome extension: an Explorer right-click or a Shift+drag opens a radial wheel. A conversion graph chains Office (COM), sharp, ffmpeg, pdf.js and SheetJS so Word, Excel, PowerPoint, PDF, images, video and audio convert to almost anything, locally. Built-in crop, add-background, redact and annotate editor.',
+    tech: ['Electron', 'Node.js', 'Chrome MV3', 'Office COM', 'ffmpeg', 'pdf.js', 'sharp'],
+    chips: ['ELECTRON', 'CHROME MV3', 'FFMPEG', 'PDF.JS'],
   },
   {
     id: 'extensions',
@@ -121,6 +121,7 @@ export const PROJECTS = [
 ];
 
 export const WORKSHOP = [
+  { name: 'Napoli Walks', repo: 'napoliwalks', note: 'walking-tour bookings, course project · Flask + SQLite' },
   { name: 'Dumb Chess', repo: 'DUMB-CHESS-v1.0-beta', note: 'chess variant with friendly fire · Express + Pug' },
   { name: 'Air hockey', repo: 'camera-vision-air-hocky-v1.0', note: 'hand-tracked two-player game · OpenCV + MediaPipe' },
   { name: 'Wine Pairer', repo: 'WinePairer', note: 'offline pairing lookup · Tkinter + pandas' },

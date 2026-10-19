@@ -355,27 +355,48 @@ ${t(sx + 110, y + 84, 'm', 9, C.accent, 'OFFICIAL PAGE · URL · DATE CHECKED', 
     return s;
   },
 
-  napoliwalks(x, y, w, h, fg) {
+  easyconvert(x, y, w, h, fg) {
+    // A source file, a dashed hand-off, and the radial wheel with the chosen petal lit.
     let s = '';
-    const cx = x + w - 152;
-    const cy = y + 100;
-    for (let k = 0; k < 9; k++) {
-      const R = 14 + k * 13;
-      let d = '';
-      for (let i = 0; i <= 72; i++) {
-        const a = (i / 72) * Math.PI * 2;
-        const rr = R * (1 + 0.07 * Math.sin(3 * a + k * 0.7) + 0.04 * Math.sin(5 * a - k));
-        d += `${i ? 'L' : 'M'}${r1(cx + Math.cos(a) * rr * 1.25)} ${r1(cy + Math.sin(a) * rr * 0.72)}`;
-      }
-      s += `<path d="${d}Z" fill="none" stroke="${k === 0 ? C.accent : fg}" stroke-opacity="${k === 0 ? 1 : r1(0.5 - k * 0.04)}"/>`;
-    }
-    const pts = [[x + 10, y + 160], [x + 90, y + 120], [x + 150, y + 150], [x + 220, y + 70], [x + 300, y + 96]];
-    s += `<path d="M${pts.map((p) => p.join(' ')).join('L')}" fill="none" stroke="${C.accent}" stroke-width="2.5" stroke-dasharray="1 7" stroke-linecap="round"/>`;
-    pts.forEach(([px, py], i) => {
-      s += `<circle cx="${px}" cy="${py}" r="12" fill="${i === pts.length - 1 ? C.accent : C.ink}" stroke="${C.accent}" stroke-width="2"/>` + t(px, py + 4, 'm', 11, C.cream, String(i + 1), 'text-anchor="middle"');
+    s += t(x, y + 14, 'm', 10, C.muted, 'RIGHT-CLICK → WHEEL → DONE', 'letter-spacing="1"');
+    s += t(x, y + 30, 'm', 10, C.muted, '44 FORMATS · WINDOWS + CHROME', 'letter-spacing="1"');
+    const fx = x + 8;
+    const fy = y + 62;
+    s += `<path d="M${fx} ${fy}H${fx + 50}L${fx + 68} ${fy + 18}V${fy + 90}H${fx}Z" fill="none" stroke="${fg}" stroke-opacity="0.7"/>
+<path d="M${fx + 50} ${fy}V${fy + 18}H${fx + 68}" fill="none" stroke="${fg}" stroke-opacity="0.7"/>`;
+    for (let i = 0; i < 4; i++) s += `<rect x="${fx + 10}" y="${fy + 28 + i * 10}" width="${[46, 38, 46, 28][i]}" height="4" fill="${fg}" fill-opacity="0.22"/>`;
+    s += `<rect x="${fx + 8}" y="${fy + 70}" width="52" height="14" fill="${fg}" fill-opacity="0.85"/>` + t(fx + 34, fy + 81, 'm', 10, C.ink, 'DOCX', 'text-anchor="middle" letter-spacing="1"');
+    s += t(fx + 34, fy + 108, 'm', 10, C.muted, 'REPORT.DOCX', 'text-anchor="middle"');
+
+    const cx = x + w - 122;
+    const cy = y + 94;
+    const R = 90;
+    const r = 36;
+    s += `<path d="M${fx + 82} ${fy + 45}H${cx - R - 14}" stroke="${C.accent}" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>`;
+    s += `<path d="M${cx - R - 22} ${fy + 39}L${cx - R - 14} ${fy + 45}L${cx - R - 22} ${fy + 51}" fill="none" stroke="${C.accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // The planner chains converters when there's no direct route.
+    const route = 'XLSX → HTML → DOCX';
+    s += `<rect x="${fx + 82.5}" y="${y + 146.5}" width="${monoW(route, 10, 1) + 14}" height="19" fill="none" stroke="${fg}" stroke-opacity="0.3"/>` + t(fx + 89, y + 159, 'm', 10, C.muted, route, 'letter-spacing="1"');
+
+    const labels = ['PDF', 'DOCX', 'XLSX', 'JPG', 'PNG', 'PPTX', 'MP4', 'MP3'];
+    const n = labels.length;
+    const seg = (Math.PI * 2) / n;
+    const gap = 0.05;
+    const pt = (rad, a) => `${r1(cx + rad * Math.sin(a))} ${r1(cy - rad * Math.cos(a))}`;
+    s += `<circle cx="${cx}" cy="${cy}" r="${R + 8}" fill="none" stroke="${fg}" stroke-opacity="0.18"/>`;
+    labels.forEach((lab, i) => {
+      const a0 = i * seg - seg / 2 + gap;
+      const a1 = i * seg + seg / 2 - gap;
+      const hot = i === 0;
+      s += `<path d="M${pt(R, a0)}A${R} ${R} 0 0 1 ${pt(R, a1)}L${pt(r, a1)}A${r} ${r} 0 0 0 ${pt(r, a0)}Z" fill="${hot ? C.accent : 'none'}" stroke="${hot ? C.accent : fg}" stroke-opacity="${hot ? 1 : 0.45}"/>`;
+      const lr = (R + r) / 2;
+      s += t(r1(cx + lr * Math.sin(i * seg)), r1(cy - lr * Math.cos(i * seg) + 4), 'm', 10, hot ? C.ink : fg, lab, `text-anchor="middle"${hot ? '' : ' fill-opacity="0.8"'}`);
     });
-    s += t(x, y + 14, 'm', 10, C.muted, '40.85° N · 14.27° E', 'letter-spacing="1"');
-    s += t(x, y + 30, 'm', 10, C.muted, 'GUIDE → TOUR → RESERVATION → REPORT', 'letter-spacing="1"');
+    s += `<circle cx="${cx}" cy="${cy}" r="${r - 6}" fill="${C.ink2}" stroke="${C.accent}"/>` + t(cx, cy + 4, 'm', 10, C.accent, 'PDF', 'text-anchor="middle" letter-spacing="1"');
+    // Cursor on the lit petal.
+    const kx = cx + 17;
+    const ky = cy - R + 26;
+    s += `<path d="M${kx} ${ky}l0 20l5 -5l4 9l4 -2l-4 -9l7 0z" fill="${C.cream}" stroke="${C.ink}" stroke-width="1.2" stroke-linejoin="round"/>`;
     return s;
   },
 
