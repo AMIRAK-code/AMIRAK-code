@@ -43,7 +43,7 @@ I'm Amir — a developer in Torino working where web apps meet the infrastructur
   <a href="https://github.com/AMIRAK-code/TEchCERT"><img src="assets/projects/techcert.svg" width="49%" alt="P.02 techCert — live. Hands-on AI certification courses with verifiable credentials. React, Supabase, Cloudflare Workers, CI."></a>
   <a href="https://github.com/AMIRAK-code/fundable-mvp-t1"><img src="assets/projects/fundable.svg" width="49%" alt="P.03 Fundable — live MVP. Founders and investors: feed, requests, offers, chat. Next.js, Supabase, Web Push."></a>
   <a href="https://github.com/AMIRAK-code/walkscape"><img src="assets/projects/walkscape.svg" width="49%" alt="P.04 WalkScape — prototype on mock data. Surface-aware walking routes, launch city Milan. Expo, React Native, Zustand."></a>
-  <a href="https://github.com/AMIRAK-code/napoliwalks"><img src="assets/projects/napoliwalks.svg" width="49%" alt="P.05 Napoli Walks — course project. Free walking tours in Naples: tours, bookings, reports. Flask, SQLite, Jinja."></a>
+  <a href="https://github.com/AMIRAK-code/easy-converter-ext-desktop-app"><img src="assets/projects/easyconvert.svg" width="49%" alt="P.05 Easy Convert — released, v0.1.0. Right-click any file, convert it to anything from a radial wheel. Windows app and Chrome extension. Electron, Chrome MV3, ffmpeg, pdf.js."></a>
   <a href="https://github.com/AMIRAK-code/StickyNOte-broswerExtenstion"><img src="assets/projects/extensions.svg" width="49%" alt="P.06 Browser extensions — tools, load unpacked. Tab Sticky Notes and Back to Work Auditor. JavaScript, Manifest V3, Shadow DOM."></a>
 </p>
 
@@ -63,15 +63,15 @@ Founder–investor matching with role-specific profiles, connection requests and
 Expo / React Native app that routes around cobblestones, grates and wet pavement. Thirteen screens on fixture data and an SVG mock map; Supabase and Mapbox are stubbed.<br>
 <sub>`Expo` `React Native` `TypeScript` `Zustand` — [repo](https://github.com/AMIRAK-code/walkscape)</sub>
 
-**P.05 Napoli Walks** · <sub>COURSE PROJECT</sub><br>
-Exam project for *Introduction to Web Applications*: guides publish tours, participants reserve places, guides file post-tour reports.<br>
-<sub>`Python` `Flask` `Flask-Login` `SQLite` `Jinja` — [repo](https://github.com/AMIRAK-code/napoliwalks)</sub>
+**P.05 Easy Convert** · <sub>RELEASED · v0.1.0</sub><br>
+Right-click any file in Explorer, or Shift+drag it onto a page in Chrome, and a radial wheel offers every format it can become. A conversion graph chains Office (via COM), sharp, ffmpeg, pdf.js and SheetJS, so Word ↔ PDF, Excel → Word, PowerPoint → MP4 or HEIC → JPG are one click. Everything runs locally. It also has a built-in crop, add-background, redact and annotate editor.<br>
+<sub>`Electron` `Node.js` `Chrome MV3` `Office COM` `ffmpeg` `pdf.js` `sharp` — [repo](https://github.com/AMIRAK-code/easy-converter-ext-desktop-app) · [download](https://github.com/AMIRAK-code/easy-converter-ext-desktop-app/releases/latest) · [demo video](https://github.com/AMIRAK-code/easy-converter-ext-desktop-app/blob/main/docs/easy-convert-promo.mp4)</sub>
 
 **P.06 Browser extensions** · <sub>TOOLS · LOAD UNPACKED</sub><br>
 Two Manifest V3 Chrome extensions in vanilla JavaScript: per-URL sticky notes toggled with <kbd>Alt</kbd>+<kbd>N</kbd>, and an idle monitor that locks the tab with an overlay and chime. Both isolate their UI in Shadow DOM.<br>
 <sub>`JavaScript` `Chrome MV3` `Shadow DOM` — [Tab Sticky Notes](https://github.com/AMIRAK-code/StickyNOte-broswerExtenstion) · [Back to Work Auditor](https://github.com/AMIRAK-code/idle-monitor-alert)</sub>
 
-<sub>**Also on the bench:** [Dumb Chess](https://github.com/AMIRAK-code/DUMB-CHESS-v1.0-beta) — chess with friendly fire, Express + Pug · [Air hockey](https://github.com/AMIRAK-code/camera-vision-air-hocky-v1.0) — hand-tracked two-player game, OpenCV + MediaPipe · [Wine Pairer](https://github.com/AMIRAK-code/WinePairer) — offline pairing lookup, Tkinter + pandas · [REfluenz](https://github.com/AMIRAK-code/REfluenz-app) — creator-platform UI on a mock API, React</sub>
+<sub>**Also on the bench:** [Napoli Walks](https://github.com/AMIRAK-code/napoliwalks) — walking-tour bookings, course project, Flask + SQLite · [Dumb Chess](https://github.com/AMIRAK-code/DUMB-CHESS-v1.0-beta) — chess with friendly fire, Express + Pug · [Air hockey](https://github.com/AMIRAK-code/camera-vision-air-hocky-v1.0) — hand-tracked two-player game, OpenCV + MediaPipe · [Wine Pairer](https://github.com/AMIRAK-code/WinePairer) — offline pairing lookup, Tkinter + pandas · [REfluenz](https://github.com/AMIRAK-code/REfluenz-app) — creator-platform UI on a mock API, React</sub>
 
 <br>
 
